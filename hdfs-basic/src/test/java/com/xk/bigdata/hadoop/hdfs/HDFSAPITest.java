@@ -108,6 +108,7 @@ public class HDFSAPITest {
 
     @Test
     public void delete() throws Exception {
+
         /**
          * Path f : 删除文件的路径
          * boolean recursive ： 是否递归
