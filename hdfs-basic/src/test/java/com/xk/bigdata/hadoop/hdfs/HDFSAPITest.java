@@ -1,5 +1,6 @@
 package com.xk.bigdata.hadoop.hdfs;
 
+import com.xk.bigdata.hadoop.utils.FinalCode;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.IOUtils;
@@ -18,8 +19,8 @@ public class HDFSAPITest {
     public void setUp() throws Exception {
         Configuration conf = new Configuration();
         conf.set("dfs.replication", "1");
-        URI uri = new URI("hdfs://bigdatatest02:8020");
-        fileSystem = FileSystem.get(uri, conf, "hdfs");
+        URI uri = new URI(FinalCode.HDFS_URI);
+        fileSystem = FileSystem.get(uri, conf, FinalCode.HDFS_USER_NAME);
     }
 
     @After
@@ -29,7 +30,7 @@ public class HDFSAPITest {
 
     @Test
     public void mkdir() throws Exception {
-        boolean res = fileSystem.mkdirs(new Path("/demo"));
+        boolean res = fileSystem.mkdirs(new Path("/bigdata/hdfs-works/20211001"));
         System.out.println(res);
     }
 
@@ -44,7 +45,7 @@ public class HDFSAPITest {
 
     @Test
     public void copyFromLocalFileByIo() throws Exception {
-        FSDataOutputStream outputStream = fileSystem.create(new Path("/demo/demo2.txt"), true);
+        FSDataOutputStream outputStream = fileSystem.create(new Path("/bigdata/hdfs-works/20211001/3.txt"), true);
         BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(new File("E:\\workspace\\java\\hadoop-project\\hdfs-basic\\data\\demo.txt")));
         IOUtils.copyBytes(inputStream, outputStream, 2048);
         IOUtils.closeStream(outputStream);
@@ -112,7 +113,7 @@ public class HDFSAPITest {
          * Path f : 删除文件的路径
          * boolean recursive ： 是否递归
          */
-        boolean res = fileSystem.delete(new Path("/demo"), true);
+        boolean res = fileSystem.delete(new Path("/bigdata"), true);
         System.out.println(res);
     }
 
