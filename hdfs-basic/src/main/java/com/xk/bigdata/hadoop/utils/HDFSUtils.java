@@ -15,8 +15,8 @@ public class HDFSUtils {
     public void stepUp() throws Exception {
         Configuration conf = new Configuration();
         conf.set("dfs.replication", "1");
-        URI uri = new URI(FinalCode.HDFS_URI);
-        fileSystem = FileSystem.get(uri, conf, FinalCode.HDFS_USER_NAME);
+        URI uri = new URI(ParamsUtils.getProperties().getProperty(FinalCode.HDFS_URI));
+        fileSystem = FileSystem.get(uri, conf, ParamsUtils.getProperties().getProperty(FinalCode.HDFS_USER_NAME));
     }
 
     /**

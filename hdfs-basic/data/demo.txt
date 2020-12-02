@@ -1,2 +1,3 @@
-xk,xk,xk,xk
-rm,rm,rm
+hadoop,spark,flink
+hbase,hadoop,spark,flink
+spark
