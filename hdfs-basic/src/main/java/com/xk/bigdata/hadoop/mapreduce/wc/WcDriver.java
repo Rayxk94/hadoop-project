@@ -20,8 +20,8 @@ public class WcDriver {
         IntWritable ONE = new IntWritable(1);
 
         /**
-         * @param key : 文件的Offset
-         * @param value ： 当前行的数据
+         * @param key     : 文件的Offset
+         * @param value   ： 当前行的数据
          * @param context ： MapReduce 上下文，可以理解成缓存数据,把Map处理好的数据放进去
          */
         @Override
@@ -35,9 +35,10 @@ public class WcDriver {
 
     public static class MyReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
         /**
-         *  shuffle 之后把key相同的数据全部都放到一起 eg : <hadoop,<1,1>>
-         * @param key ：eg: hadoop
-         * @param values :eg : <1,1>
+         * shuffle 之后把key相同的数据全部都放到一起 eg : <hadoop,<1,1>>
+         *
+         * @param key     ：eg: hadoop
+         * @param values  :eg : <1,1>
          * @param context : MapReduce 上下文，把Reducec处理好的数据放进去
          */
         @Override
@@ -51,16 +52,21 @@ public class WcDriver {
     }
 
     public static void main(String[] args) throws Exception {
-
-        String input = "hdfs-basic/data/demo.txt";
-        String output = "hdfs-basic/out";
+        String input = "";
+        String output = "";
+        if (args.length == 2) {
+            input = args[0];
+            output = args[1];
+        } else {
+            throw new Exception("parameter error");
+        }
 
         // 1 创建 MapReduce job
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);
 
         // 删除输出路径
-        FileUtils.deleteFile(job.getConfiguration(),output);
+        FileUtils.deleteFile(job.getConfiguration(), output);
 
         // 2 设置运行主类
         job.setJarByClass(WcDriver.class);
