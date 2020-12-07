@@ -18,6 +18,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <hadoop.version>2.6.0-cdh5.16.2</hadoop.version>
         <junit.version>4.12</junit.version>
+        <mysql.version>5.1.48</mysql.version>
     </properties>
 
     <repositories>
@@ -46,6 +47,11 @@
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

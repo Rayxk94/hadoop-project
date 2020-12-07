@@ -19,7 +19,7 @@ public class AccessDriver {
 
     public static void main(String[] args) throws Exception {
 
-        String input = "mapreduce-basic/data/access.log";
+        String input = "mapreduce-basic/data/access.data";
         String output = "mapreduce-basic/out";
 
         // 1 创建 MapReduce job
