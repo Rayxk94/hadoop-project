@@ -103,8 +103,6 @@ public class ReduceJoinDriver {
             List<EmpInfoReduceJoinWritable> emps = new ArrayList<>();
             String dName = null;
             String dMessage = null;
-            // deptno,dname,message
-            // empno,ename,deptno
             for (EmpInfoReduceJoinWritable emp : values) {
                 if (emp.getFlg().equals("1")) {
                     // 数据来自emp
