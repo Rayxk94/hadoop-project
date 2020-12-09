@@ -8,8 +8,6 @@ import java.io.IOException;
 
 public class EmpWritable implements Writable {
 
-    // empno,ename,deptno
-
     private int empNo;
 
     private String eName;
